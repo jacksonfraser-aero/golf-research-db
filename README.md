@@ -131,6 +131,6 @@ psql golf_research_demo -f sql/04_backtest.sql
 psql golf_research_demo -f sql/05_backtest_sensitivity.sql
 ```
 
-Built by Jackson Fraser. Companion project: `golf-weather-revenue-model`
+Built by Jackson Fraser.
 (the regression analysis this database is designed to eventually validate
 against real point-in-time data).
