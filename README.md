@@ -1,17 +1,12 @@
 # Point-in-Time Golf Demand Research Database
 
 A bitemporal PostgreSQL schema demonstrating how to avoid lookahead bias in
-weather-driven demand research, validated and backtested against a synthetic
-dataset with the same statistical shape as a real operational database I
-built and maintain privately.
+weather-driven demand research, validated and backtested end to end against
+a synthetic dataset.
 
 > **Data transparency:** every row in this repository is synthetically
 > generated (see `seed/generate_synthetic_data.py`). No real bookings,
-> forecasts, or pricing data are published here. The private version of this
-> project runs against real daily operations data I collect myself, joined
-> to live weather forecast snapshots ingested daily — see
-> `golf-weather-revenue-model` for the companion regression analysis on the
-> same underlying business problem.
+> forecasts, or pricing data are used or published here.
 
 ## The problem this solves
 
@@ -115,14 +110,12 @@ are useful; conflating them would not be.
 - All data is synthetic; forecast-error noise is a modelling choice (shrinks
   linearly with lead time), not fitted to real forecast-error distributions.
 - The incremental/induced-demand share is unobservable and swept as a
-  sensitivity range rather than estimated — the private version of this
-  project is designed to eventually measure it directly, by comparing
-  discount-fired and non-fired days' booking-lead-time distributions once
-  enough real data has accumulated.
-- The private database began accumulating genuine point-in-time forecast
-  history in July 2026; a real-data backtest requires several weeks of
-  ingestion before results are meaningful, for the same reason this repo
-  uses synthetic data to demonstrate the method immediately.
+  sensitivity range rather than estimated. Measuring it directly would mean
+  comparing discount-fired and non-fired days' booking-lead-time
+  distributions on real booking data.
+- A meaningful backtest on real forecasts needs several weeks of
+  point-in-time forecast history before results stabilise, which is why
+  this repo uses synthetic data to demonstrate the method immediately.
 
 ## How to run
 
